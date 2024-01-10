@@ -1,18 +1,4 @@
-//References
-let timeLeft = document.querySelector(".time-left");
-let quizContainer = document.getElementById("container");
-let nextBtn = document.getElementById("next-button");
-let countOfQuestion = document.querySelector(".number-of-question");
-let displayContainer = document.getElementById("display-container");
-let scoreContainer = document.querySelector(".score-container");
-let restart = document.getElementById("restart");
-let userScore = document.getElementById("user-score");
-let startScreen = document.querySelector(".start-screen");
-let startButton = document.getElementById("start-button");
-let questionCount;
-let scoreCount = 0;
-let count = 11;
-let countdown;
+
 
 const quizArray = [
     {
@@ -48,7 +34,7 @@ const quizArray = [
     {
         id: "5",
         question: "In PowerShell, how can we look up the network information of our system?",
-        opitions: ["ifconfig", "ipconfig", "nslookup", "nwlookup"],
+        options: ["ifconfig", "ipconfig", "nslookup", "nwlookup"],
         correct: "ipconfig",
     },
     {
@@ -71,17 +57,25 @@ const quizArray = [
     },
 ];
 
-//Restart Quiz
-restart.addEventListener("click", () => {
-    initial();
-    displayContainer.classList.remove("hide");
-    scoreContainer.classList.add("hide");
-});
+let restart = document.getElementById("restart");
+let displayContainer = document.getElementById("display-container");
+let scoreContainer = document.querySelector(".score-container");
+let userScore = document.getElementById("user-score");
+
+quizRestart();
+
+let quizContainer = document.getElementById("container");
+let nextBtn = document.getElementById("next-button");
+let countOfQuestion = document.querySelector(".number-of-question");
+
+let questionCount;
+
+let scoreCount = 0;
+
+let count = 9;
 
 //Next Button
-nextBtn.addEventListener(
-    "click",
-    (displayNext = () => {
+nextBtn.addEventListener("click", (displayNext = () => {
         //increment questionCount
         questionCount += 1;
         //if last question
@@ -98,13 +92,14 @@ nextBtn.addEventListener(
                 questionCount + 1 + " of " + quizArray.length + " Question";
             //display quiz
             quizDisplay(questionCount);
-            count = 11;
+            count = 9;
             clearInterval(countdown);
             timerDisplay();
         }
     })
 );
 
+//Display quiz
 const quizDisplay = (questionCount) => {
     let quizCards = document.querySelectorAll(".container-mid");
     //Hide other cards
@@ -114,6 +109,14 @@ const quizDisplay = (questionCount) => {
     //display current question card
     quizCards[questionCount].classList.remove("hide");
 };
+
+function quizRestart() {
+    restart.addEventListener("click", () => {
+        initial();
+        displayContainer.classList.remove("hide");
+        scoreContainer.classList.add("hide");
+    });
+}
 
 //Quiz Creation
 function quizCreator() {
@@ -165,8 +168,6 @@ function checker(userOption) {
         });
     }
 
-    //clear interval(stop timer)
-    clearInterval(countdown);
     //disable all options
     options.forEach((element) => {
         element.disabled = true;
@@ -179,11 +180,13 @@ function initial() {
     questionCount = 0;
     scoreCount = 0;
     count = 11;
-    clearInterval(countdown);
-    timerDisplay();
     quizCreator();
     quizDisplay(questionCount);
 }
+
+let startScreen = document.querySelector(".start-screen");
+
+let startButton = document.getElementById("start-button");
 
 //when user click on start button
 startButton.addEventListener("click", () => {

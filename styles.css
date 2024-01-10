@@ -10,7 +10,7 @@ html {
 
 h1 {
   font-size: 72px;
-  background: -webkit-linear-gradient(#02afff, #01dac7);
+  background: -webkit-linear-gradient(#c6aafa, #01dac7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
