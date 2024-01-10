@@ -2,9 +2,32 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>title</title>
+    <title>CyberSecurity Quiz App</title>
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.cdnfonts.com/css/bebas-neue" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/share-tech-mono" rel="stylesheet">
 </head>
 <body>
-    
+    <div class="start-screen">
+        <h1>Are you a CyberSecurity Specialist? <br>Let's find out!</h1>
+        <button id="start-button">>_start</button>
+    </div>
+    <div id="display-container">
+        <div class="header">
+            <div class="number-of-count">
+                <span class="number-of-question">1 / 7 </span>
+            </div>
+        </div>
+        <div id="container">
+           
+        </div>
+        <button id="next-button">Next</button>
+    </div>
+    <div class="score-container hide">
+        <div id="user-score">Demo Score</div>
+        <button id="restart">restart</button>
+    </div>
+    <script src="index.js"></script>    
 </body>
 </html>
